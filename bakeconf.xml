@@ -7,12 +7,29 @@
         <attribute name="revision" value="dce-1.12"/>
       </source>
       <depends_on name="dce-meta-1.12" optional="False"/>
-      <depends_on name="net-next-nuse-mptcp" optional="False"/>
+      <depends_on name="net-next-nuse-mptcp-custom" optional="False"/>
       <depends_on name="iproute2-4.4.0" optional="False"/>
       <depends_on name="lksctp-dev" optional="True"/>
       <build type="waf" objdir="objdir" sourcedir="ns-3-dce">
         <attribute name="supported_os" value="linux;linux2"/>
         <attribute name="configure_arguments" value="configure --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../net-next-nuse-mptcp/arch"/>
+      </build>
+    </module>
+
+    <module name="net-next-nuse-mptcp-custom">
+      <source type="git">
+        <attribute name="url" value="https://github.com/psomani16k/net-next-nuse.git"/>
+        <attribute name="module_directory" value="net-next-nuse-mptcp"/>
+        <attribute name="revision" value="mptcp_trunk_libos"/>
+        <attribute name="fetch_option" value=""/>
+      </source>
+      <depends_on name="bc" optional="False"/>
+      <build type="make">
+        <attribute name="supported_os" value="linux;linux2"/>
+        <attribute name="configure_arguments" value="defconfig ARCH=lib"/>
+        <attribute name="build_arguments" value="library ARCH=lib"/>
+        <attribute name="no_installation" value="True"/>
+        <attribute name="post_installation" value="mkdir -p $INSTALLDIR/bin_dce; cd $INSTALLDIR/bin_dce; cp $SRCDIR/arch/lib/tools/libsim-linux-4.1.0.so ./; ln -s -f libsim-linux-4.1.0.so liblinux.so"/>
       </build>
     </module>
 
@@ -32,6 +49,7 @@
         <attribute name="post_installation" value="mkdir -p $INSTALLDIR/bin_dce; cd $INSTALLDIR/bin_dce; cp $SRCDIR/arch/lib/tools/libsim-linux-4.1.0.so ./; ln -s -f libsim-linux-4.1.0.so liblinux.so"/>
       </build>
     </module>
+
     <module name="dce-meta-dev">
       <source type="git">
         <attribute name="url" value="https://github.com/direct-code-execution/ns-3-dce"/>
