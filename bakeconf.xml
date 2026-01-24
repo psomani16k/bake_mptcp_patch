@@ -35,7 +35,7 @@
 
     <module name="net-next-nuse-mptcp">
       <source type="git">
-        <attribute name="url" value="https://github.com/libos-nuse/net-next-nuse.git"/>
+        <attribute name="url" value="https://github.com/libos-nuse/libos-mptcp.git"/>
         <attribute name="module_directory" value="net-next-nuse-mptcp"/>
         <attribute name="revision" value="mptcp_trunk_libos"/>
         <attribute name="fetch_option" value=""/>
