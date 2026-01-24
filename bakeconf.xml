@@ -18,7 +18,7 @@
 
     <module name="net-next-nuse-mptcp-custom">
       <source type="git">
-        <attribute name="url" value="https://github.com/psomani16k/net-next-nuse.git"/>
+        <attribute name="url" value="https://github.com/psomani16k/libos-mptcp.git"/>
         <attribute name="module_directory" value="net-next-nuse-mptcp"/>
         <attribute name="revision" value="mptcp_trunk_libos"/>
         <attribute name="fetch_option" value=""/>
